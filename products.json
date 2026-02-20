@@ -1,0 +1,102 @@
+[
+  {
+    "id": 0,
+    "name": "Blue Polka Top",
+    "price": 899,
+    "category": "Clothing",
+    "image": "./assets/download2.jpeg",
+    "description": "Trendy blue polka dot top with soft cotton fabric, perfect for casual outings.",
+    "rating": 4.6,
+    "reviews": 132,
+    "stock": 12
+  },
+  {
+    "id": 1,
+    "name": "Beaded Necklace",
+    "price": 499,
+    "category": "Jewellery",
+    "image": "./assets/bangle collection.jpeg",
+    "description": "Elegant handcrafted beaded necklace made with premium materials.",
+    "rating": 4.3,
+    "reviews": 95,
+    "stock": 7
+  },
+  {
+    "id": 2,
+    "name": "Vintage Bracelet",
+    "price": 1299,
+    "category": "Jewellery",
+    "image": "./assets/blue themed blacelet!!.jpeg",
+    "description": "Antique-inspired bracelet with intricate metalwork and a premium finish.",
+    "rating": 4.8,
+    "reviews": 210,
+    "stock": 4,
+    "type": "featured"
+  },
+  {
+    "id": 3,
+    "name": "Retro Lamp",
+    "price": 799,
+    "category": "Home Decor",
+    "image": "./assets/download6.jpeg",
+    "description": "Warm retro-style lamp that adds vintage charm to your living space.",
+    "rating": 4.5,
+    "reviews": 58,
+    "stock": 10
+  },
+  {
+    "id": 4,
+    "name": "Classic Handbag",
+    "price": 999,
+    "category": "Accessories",
+    "image": "./assets/hello.jpeg",
+    "description": "Stylish leather handbag with a timeless design and durable finish.",
+    "rating": 4.7,
+    "reviews": 178,
+    "stock": 8
+  },
+  {
+    "id": 6,
+    "name": "Classic Handbag",
+    "price": 999,
+    "category": "Accessories",
+    "image": "./assets/hello.jpeg",
+    "description": "Stylish leather handbag with a timeless design and durable finish.",
+    "rating": 4.7,
+    "reviews": 178,
+    "stock": 8
+  },
+  {
+    "id": 5,
+    "name": "Old Novel Set",
+    "price": 599,
+    "category": "Books",
+    "image": "./assets/download12.jpeg",
+    "description": "Vintage set of classic novels with rustic covers and elegant prints.",
+    "rating": 4.2,
+    "reviews": 64,
+    "stock": 5
+  },
+  {
+    "id": 7,
+    "name": "Old Novel Set",
+    "price": 599,
+    "category": "Books",
+    "image": "./assets/download12.jpeg",
+    "description": "Vintage set of classic novels with rustic covers and elegant prints.",
+    "rating": 4.2,
+    "reviews": 64,
+    "stock": 5
+  },
+  {
+    "id": 7,
+    "name": "Old Novel Set",
+    "price": 599,
+    "category": "Books",
+    "image": "./assets/download12.jpeg",
+    "description": "Vintage set of classic novels with rustic covers and elegant prints.",
+    "rating": 4.2,
+    "reviews": 64,
+    "stock": 5
+  }
+]

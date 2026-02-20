@@ -1,0 +1,49 @@
+<%- include('partials/header', { 
+    pageTitle: 'AI Stylist', 
+    active: 'ai',
+    pageStyles: ['/css/style.css', '/css/style-ai.css']
+}) %>
+
+<!-- Hero Section -->
+<section class="shop-hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+      <h1 class="hero-title">Personal Style-Assistant</h1>
+  </div>
+</section>
+
+<!-- Upload Section -->
+<section class="upload-section">
+  <div class="upload-container">
+
+      <div class="upload-area" onclick="document.getElementById('photo-upload').click()">
+
+          <div class="upload-icon">
+              <svg viewBox="0 0 24 24">
+                  <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+              </svg>
+          </div>
+
+          <h2 class="upload-title">Upload Your Photo</h2>
+
+          <p class="upload-description">
+              Upload a photo of your outfit—or even a picture of yourself—and let our AI stylist analyze your look and suggest the perfect accessories.
+          </p>
+
+          <button type="button" class="upload-button">Choose Photo</button>
+
+          <input type="file" id="photo-upload" class="file-input" accept="image/*">
+
+          <div class="upload-info">
+              Supported formats: JPG, PNG, WEBP (Max size: 5MB)
+          </div>
+
+          <div class="selected-file" id="selected-file">
+              <span id="file-name"></span>
+          </div>
+
+      </div>
+  </div>
+</section>
+
+<%- include('partials/footer', { pageScripts: ['/scripts/search.js'] }) %>

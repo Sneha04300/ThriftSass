@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style-ai.css">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Navbar -->
+<nav class="navbar">
+          <div class="nav-container">
+              <div class="nav-left">
+                  <!-- Option 1: Pure logo image (replace the background-image URL with your logo) -->
+                  <a href="index.html" class="logo"></a>
+                  
+                  
+                  <ul class="nav-links">
+                      <li><a href="shop.html" class="active">Shop All</a></li>
+                      <li><a href="shop.html">Thrifted Clothes</a></li>
+                      <li><a href="shop.html">Jewellery</a></li>
+                      <li><a href="ai-style.html">AI Stylist</a></li>
+                      <li><a href="cart.html">Cart</a></li>
+                  </ul>
+              </div>
+
+              <div class="nav-right">
+                  <div class="search-container">
+                      <input
+                          type="text"
+                          class="search-box"
+                          placeholder="Search Products..."
+                      />
+                      <span class="search-icon">🔍</span>
+                  </div>
+                  <a href="login.html" class="login-btn">Get Started</a>
+                  <button class="mobile-menu">☰</button>
+              </div>
+          </div>
+      </nav>
+
+    <!-- HeroSection -->
+      <section class="shop-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Personal Style-Assistant</h1>
+        </div>
+    </section>
+
+
+
+    <!-- Upload Box Section -->
+     <section class="upload-section">
+        <div class="upload-container">
+            <div class="upload-area" onclick="document.getElementById('photo-upload').click()">
+                <div class="upload-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                    </svg>
+                </div>
+                
+                <h2 class="upload-title">Upload Your Photo</h2>
+                
+                <p class="upload-description">
+                    Upload a photo of your outfit—or even a picture of yourself—and let us do the magic. Our style experts (and a touch of AI) will analyze your look and suggest the perfect accessories to elevate your outfit.
+                </p>
+                
+                <button type="button" class="upload-button">
+                    Choose Photo
+                </button>
+                
+                <input type="file" id="photo-upload" class="file-input" accept="image/*">
+                
+                <div class="upload-info">
+                    Supported formats: JPG, PNG, WEBP (Max size: 5MB)
+                </div>
+                
+                <div class="selected-file" id="selected-file">
+                    <span id="file-name"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+     <footer class="footer">
+        <div class="footer-container">
+            <!-- Brand Section -->
+            <div class="footer-brand">
+                <a href="#" class="footer-logo">thriftsass</a>
+                <p class="footer-description">
+                    Sustainable fashion meets modern style. Curated vintage pieces and handcrafted jewelry for the conscious fashionista.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Shop All</a></li>
+                    <li><a href="#">Vintage Fashion</a></li>
+                    <li><a href="#">Jewellery</a></li>
+                    <li><a href="#">AI Stylish</a></li>
+                    <li><a href="#">About Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Customer Care -->
+            <div class="footer-column">
+                <h3>Customer Care</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="newsletter">
+                <h3>Stay in Touch</h3>
+                <p class="newsletter-description">
+                    Get the latest sustainable fashion finds and styling tips
+                </p>
+                <form class="newsletter-form">
+                    <input 
+                        type="email" 
+                        placeholder="Enter your email" 
+                        class="newsletter-input"
+                        required
+                    >
+                    <button type="submit" class="subscribe-btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 ThriftSass. All rights reserved. | Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+    <script src="scripts/search.js"></script>
+</body>
+</html>

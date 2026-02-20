@@ -1,0 +1,18 @@
+<%- include('partials/header', { pageTitle: 'Shop All', active: 'shop' }) %>
+
+    <section class="shop-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <h1 class="hero-breadcrumb">Shop All</h1>
+          <h1 class="hero-title">Sustainable Section</h1>
+        </div>
+      </section>
+
+      <!-- Products  -->
+      <div class="products-showcase">
+  <div class="products-grid" id="product-container">
+    <!-- Products will be injected here using JavaScript OOP -->
+  </div>
+</div>  
+
+<%- include('partials/footer', { pageScripts: ['/scripts/shop_app.js','/scripts/cart-manager.js','/scripts/cart.js','/scripts/search.js'] }) %>

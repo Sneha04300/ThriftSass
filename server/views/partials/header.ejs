@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/style-shop.css" />
+
+    <% if (locals.pageStyles && pageStyles.length) { %>
+      <% pageStyles.forEach(function(style) { %>
+        <link rel="stylesheet" href="<%= style %>">
+      <% }) %>
+    <% } %>
+    
+    <title><%= pageTitle || 'ThriftSass' %></title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-left">
+          <a href="/" class="logo"></a>
+
+          <ul class="nav-links">
+            <li><a href="/shop" class="<%= active === 'shop' ? 'active' : '' %>">Shop All</a></li>
+            <li><a href="/shop" class="<%= active === 'thrift' ? 'active' : '' %>">Thrifted Clothes</a></li>
+            <li><a href="/shop" class="<%= active === 'jewel' ? 'active' : '' %>">Jewellery</a></li>
+            <li><a href="/ai-style" class="<%= active === 'ai' ? 'active' : '' %>">AI Stylist</a></li>
+            <li><a href="/cart" class="<%= active === 'cart' ? 'active' : '' %>">Cart</a></li>
+          </ul>
+        </div>
+
+        <div class="nav-right">
+          <div class="search-container">
+            <input type="text" class="search-box" placeholder="Search Products..." />
+            <span class="search-icon">🔍</span>
+          </div>
+          <a href="/login" class="login-btn">Get Started</a>
+          <button class="mobile-menu">☰</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- page content -->

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/style-shop.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+<body>
+<!-- Navbar -->
+   <nav class="navbar">
+          <div class="nav-container">
+              <div class="nav-left">
+                  <!-- Option 1: Pure logo image (replace the background-image URL with your logo) -->
+                  <a href="index.html" class="logo"></a>
+                  
+                  
+                  <ul class="nav-links">
+                      <li><a href="shop.html" class="active">Shop All</a></li>
+                      <li><a href="shop.html">Thrifted Clothes</a></li>
+                      <li><a href="shop.html">Jewellery</a></li>
+                      <li><a href="ai-style.html">AI Stylist</a></li>
+                      <li><a href="cart.html">Cart</a></li>
+                  </ul>
+              </div>
+
+              <div class="nav-right">
+                  <div class="search-container">
+                      <input
+                          type="text"
+                          class="search-box"
+                          placeholder="Search Products..."
+                      />
+                      <span class="search-icon">🔍</span>
+                  </div>
+                  <a href="login.html" class="login-btn">Get Started</a>
+                  <button class="mobile-menu">☰</button>
+              </div>
+          </div>
+      </nav>
+
+    <!-- Hero Section  -->
+        <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Sass up your thrift</h1>
+                <p class="hero-subtitle">Discover unique, sustainable fashion pieces that tell a story. From vintage gems to contemporary finds, curate your style with purpose.</p>
+                
+                <div class="hero-buttons">
+                    <a href="shop.html" class="btn-primary">Shop Thrift</a>
+                    <a href="shop.html" class="btn-secondary">Shop Designer</a>
+                </div>
+                
+                <a href="ai-style.html" class="hero-cta">Try the AI Stylist</a>
+            </div>
+            
+            <div class="hero-image">
+                <img src="assets/hero-image.jpg" alt="Hero Image">
+            </div>
+        </div>
+    </section>
+
+<!-- Why choose section -->
+ <section class="features-section">
+        <div class="features-container">
+            <h2 class="section-title">Why Choose ThriftSass?</h2>
+            <p class="section-subtitle">
+                Join the sustainable fashion revolution with our curated collection of thrifted outfits and upcycled jewelry, enhanced by AI-powered styling that helps you create unique, eco-friendly looks with confidence and sass.
+            </p>
+
+            <div class="features-grid">
+                <!-- Sustainable & Stylish -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8 12l2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Sustainable & Stylish</h3>
+                    <p class="feature-description">
+                        Every thrifted outfit and upcycled jewel saves waste while keeping you fashion-forward.
+                    </p>
+                </div>
+
+                <!-- AI-Powered Styling -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">AI-Powered Styling</h3>
+                    <p class="feature-description">
+                        Get smart jewelry recommendations tailored to your thrift finds (sass factor: unlocked).
+                    </p>
+                </div>
+
+                <!-- Community & Confidence -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Community & Confidence</h3>
+                    <p class="feature-description">
+                        Share your looks, get inspired, and shop bundles curated just for you.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Feature Collection -->
+ <section class="products-section">
+        <div class="products-container">
+            <h2 class="section-title">Featured Treasures</h2>
+            <p class="section-subtitle">
+                Discover our handpicked selection of vintage finds and sustainable jewelry pieces
+            </p>
+ 
+<section id="home-product-container" class="product-container"></section>
+            
+
+            <a href="./shop.html" class="view-more">Explore</a>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+     <section class="testimonials-section">
+        <div class="testimonials-container">
+            <h2 class="section-title">What are Community Says</h2>
+
+            <div class="testimonials-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">
+                        "ThriftSass completely changed how I think about fashion. Every piece tells a story, and the AI stylist helps me create looks I never would have thought of!"
+                    </p>
+                    <div class="testimonial-meta">
+                        <div class="stars">
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                        </div>
+                        <div class="reviewer-name">Sarah M.</div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">
+                        "ThriftSass completely changed how I think about fashion. Every piece tells a story, and the AI stylist helps me create looks I never would have thought of!"
+                    </p>
+                    <div class="testimonial-meta">
+                        <div class="stars">
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star">★</span>
+                        </div>
+                        <div class="reviewer-name">Emma L.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ai stylish section -->
+ <section class="cta-section">
+        <div class="cta-container">
+            <div class="cta-card">
+                <h2 class="cta-title">Ready to Transform Your Style?</h2>
+                <p class="cta-description">
+                    Join thousands of fashion lovers discovering sustainable style with our AI-powered recommendations
+                </p>
+                <a href="#" class="cta-button">Try AI Stylist Free</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer  -->
+     <footer class="footer">
+        <div class="footer-container">
+            <!-- Brand Section -->
+            <div class="footer-brand">
+                <a href="#" class="footer-logo">thriftsass</a>
+                <p class="footer-description">
+                    Sustainable fashion meets modern style. Curated vintage pieces and handcrafted jewelry for the conscious fashionista.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Shop All</a></li>
+                    <li><a href="#">Vintage Fashion</a></li>
+                    <li><a href="#">Jewellery</a></li>
+                    <li><a href="#">AI Stylish</a></li>
+                    <li><a href="#">About Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Customer Care -->
+            <div class="footer-column">
+                <h3>Customer Care</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="newsletter">
+                <h3>Stay in Touch</h3>
+                <p class="newsletter-description">
+                    Get the latest sustainable fashion finds and styling tips
+                </p>
+                <form class="newsletter-form">
+                    <input 
+                        type="email" 
+                        placeholder="Enter your email" 
+                        class="newsletter-input"
+                        required
+                    >
+                    <button type="submit" class="subscribe-btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 ThriftSass. All rights reserved. | Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+</body>
+
+
+<script src="scripts/search.js"></script>
+<script src="scripts/shop_app.js"></script>
+</html> 

@@ -1,0 +1,66 @@
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <a href="#" class="footer-logo">thriftsass</a>
+          <p class="footer-description">
+            Sustainable fashion meets modern style. Curated vintage pieces and
+            handcrafted jewelry for the conscious fashionista.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="/shop">Shop All</a></li>
+            <li><a href="/shop">Vintage Fashion</a></li>
+            <li><a href="/shop">Jewellery</a></li>
+            <li><a href="/ai-style">AI Stylish</a></li>
+            <li><a href="/">About Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Customer Care</h3>
+          <ul class="footer-links">
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="newsletter">
+          <h3>Stay in Touch</h3>
+          <p class="newsletter-description">
+            Get the latest sustainable fashion finds and styling tips
+          </p>
+          <form class="newsletter-form">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              class="newsletter-input"
+              required
+            />
+            <button type="submit" class="subscribe-btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 ThriftSass. All rights reserved. | Privacy Policy | Terms of Service</p>
+      </div>
+    </footer>
+
+    <% if (pageScripts && pageScripts.length) { %>
+      <% pageScripts.forEach(function(s){ %>
+        <script src="<%= s %>"></script>
+      <% }) %>
+    <% } %>
+    
+
+    <!-- Common scripts (only include truly global scripts here). Page-specific scripts
+      should be passed via the pageScripts variable to avoid duplicate loads.) -->
+    <!-- <script src="/scripts/search.js"></script> -->
+  </body>
+</html>

@@ -1,0 +1,262 @@
+.shop-hero {
+            height: 400px;
+            position: relative;
+            background-image: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-breadcrumb {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+            opacity: 0.9;
+            letter-spacing: 1px;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #ffc107;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .shop-hero {
+                height: 300px;
+            }
+
+            .hero-breadcrumb {
+                font-size: 1rem;
+                margin-bottom: 15px;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .shop-hero {
+                height: 250px;
+            }
+
+            .hero-content {
+                padding: 0 15px;
+            }
+
+            .hero-breadcrumb {
+                font-size: 0.9rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+        }
+ 
+          .upload-section {
+            padding: 80px 0;
+            background-color: #ffffff;
+        }
+
+        .upload-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .upload-area {
+            width: 100%;
+            max-width: 700px;
+            background-color: #fafafa;
+            border: 3px dashed #ffc107;
+            border-radius: 16px;
+            padding: 60px 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .upload-area:hover {
+            border-color: #ffb300;
+            background-color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 193, 7, 0.1);
+        }
+
+        .upload-area.dragover {
+            border-color: #ffb300;
+            background-color: #fffbf0;
+            transform: scale(1.02);
+        }
+
+        .upload-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            box-shadow: 0 8px 20px rgba(255, 193, 7, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .upload-area:hover .upload-icon {
+            transform: scale(1.1);
+            box-shadow: 0 12px 30px rgba(255, 193, 7, 0.4);
+        }
+
+        .upload-icon svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+
+        .upload-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            letter-spacing: -0.01em;
+        }
+
+        .upload-description {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+            max-width: 500px;
+            margin: 0 auto 40px;
+        }
+
+        .upload-button {
+            background-color: #000;
+            color: white;
+            padding: 16px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .upload-button:hover {
+            background-color: #333;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .upload-info {
+            margin-top: 25px;
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        .selected-file {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f5e8;
+            border: 1px solid #4caf50;
+            border-radius: 8px;
+            color: #2e7d32;
+            font-weight: 500;
+            display: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .upload-section {
+                padding: 60px 0;
+            }
+
+            .upload-area {
+                padding: 40px 25px;
+            }
+
+            .upload-title {
+                font-size: 1.6rem;
+            }
+
+            .upload-description {
+                font-size: 0.95rem;
+                margin-bottom: 30px;
+            }
+
+            .upload-icon {
+                width: 70px;
+                height: 70px;
+                margin-bottom: 25px;
+            }
+
+            .upload-icon svg {
+                width: 28px;
+                height: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .upload-container {
+                padding: 0 15px;
+            }
+
+            .upload-area {
+                padding: 35px 20px;
+            }
+
+            .upload-title {
+                font-size: 1.4rem;
+            }
+
+            .upload-description {
+                font-size: 0.9rem;
+            }
+
+            .upload-button {
+                width: 100%;
+                max-width: 250px;
+            }
+        }

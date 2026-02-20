@@ -1,0 +1,24 @@
+<%- include('partials/header', { pageTitle: 'Cart', active: 'cart', pageStyles: ['/css/style-cart.css'] }) %>
+
+<main class="cart-page">
+
+    <h1>Your Shopping Cart</h1>
+
+    <!-- CART ITEMS -->
+    <div id="cart-container" class="cart-container"></div>
+
+    <!-- CART FOOTER (Total + Clear Button) -->
+    <div class="cart-footer">
+        <h3 id="total-price">Total: ₹0</h3>
+        <button id="clear-cart" type="button" class="clear-btn">Clear Cart</button>
+    </div>
+
+</main>
+
+<%- include('partials/footer', { 
+    pageScripts: [
+        '/scripts/cart-manager.js', 
+        '/scripts/cart.js',
+        '/scripts/search.js'
+    ] 
+}) %>

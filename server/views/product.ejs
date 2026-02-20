@@ -1,0 +1,14 @@
+<%- include('partials/header', { 
+  pageTitle: 'Product', 
+  active: '', 
+  pageStyles: ['/css/cards.css']
+}) %> 
+  <section class="product-page">
+    <div class="product-container">
+  <!-- Product details will be rendered by scripts/product.js based on URL or query param -->
+  <div id="product-details"></div>
+    </div>
+  </section>
+
+  <!-- include product-specific script -->
+<%- include('partials/footer', { pageScripts: ['/scripts/product.js', '/scripts/cart-manager.js'] }) %>

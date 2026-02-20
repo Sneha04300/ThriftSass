@@ -1,0 +1,64 @@
+<%- include('partials/header', { 
+    pageTitle: 'Login', 
+    active: '',
+    pageStyles: ['/css/style-login.css'] 
+}) %>
+
+<div class="login-container">
+  <div class="login-overlay"></div>
+
+  <div class="login-content">
+
+    <!-- LEFT TEXT -->
+    <div class="login-text">
+      <h1 class="login-title">
+        Welcome Back to <span class="highlight">ThriftSaas</span>
+      </h1>
+      <p style="font-size:1.1rem; margin-top:10px;">
+        Log in to continue shopping, managing your cart, and exploring the latest thrift collections.
+      </p>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <div class="login-form-container">
+
+      <div class="form-header">
+        <div class="logo">
+        
+        </div>
+        <h2 class="form-title">Sign In</h2>
+      </div>
+
+      <form action="/auth/login" method="POST">
+
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" name="email" class="form-input" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input type="password" name="password" class="form-input" placeholder="Enter your password" required>
+        </div>
+
+        <div class="forgot-password">
+          <a href="#">Forgot Password?</a>
+        </div>
+
+        <button type="submit" class="login-btn">Login</button>
+
+      </form>
+
+      <div class="signup-section">
+        <p class="signup-text">Don't have an account?</p>
+        <a href="/signup">
+          <button class="signup-btn">Create Account</button>
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<%- include('partials/footer', { pageScripts: ['/scripts/search.js'] }) %>

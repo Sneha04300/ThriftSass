@@ -1,0 +1,13 @@
+{
+  "watch": ["server"],
+  "ext": "js,json",
+  "exec": "node server/app.js",
+  "ignore": [
+    "html/**",
+    "scripts/**",
+    "css/**",
+    "assets/**",
+    "*.html",
+    "cart.js"
+  ]
+}
