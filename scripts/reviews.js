@@ -4,12 +4,25 @@ let currentProductId = null;
 
 // Initialize reviews when page loads
 document.addEventListener('DOMContentLoaded', () => {
-    // Get product ID from URL
+    // Get product ID from URL - check both route param and query param
     const urlParams = new URLSearchParams(window.location.search);
     currentProductId = urlParams.get('id');
     
+    // If not in query params, try to get from URL path (e.g., /product/123)
+    if (!currentProductId) {
+        const pathParts = window.location.pathname.split('/');
+        const productIndex = pathParts.indexOf('product');
+        if (productIndex !== -1 && pathParts[productIndex + 1]) {
+            currentProductId = pathParts[productIndex + 1];
+        }
+    }
+    
+    console.log('Current Product ID:', currentProductId); // Debug log
+    
     if (currentProductId) {
         loadProductReviews(currentProductId);
+    } else {
+        console.error('No product ID found in URL');
     }
 });
 
@@ -114,12 +127,19 @@ async function submitReview() {
     const rating = document.getElementById('review-rating').value;
     const reviewText = document.getElementById('review-text').value;
     
+    // Validate product ID
+    if (!currentProductId) {
+        alert('Error: Product ID not found. Please refresh the page.');
+        console.error('currentProductId is null');
+        return;
+    }
+    
     if (!reviewText.trim()) {
         alert('Please write a review before submitting.');
         return;
     }
     
-    // Get user ID from session (you'll need to implement this based on your auth system)
+    // Get user ID from session
     const userId = getUserIdFromSession();
     
     if (!userId) {
@@ -128,23 +148,29 @@ async function submitReview() {
         return;
     }
     
+    const reviewData = {
+        userId: userId,
+        productId: currentProductId,
+        rating: parseInt(rating),
+        reviewText: reviewText.trim()
+    };
+    
+    console.log('Submitting review:', reviewData); // Debug log
+    
     try {
         const response = await fetch('/api/reviews/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                userId: userId,
-                productId: currentProductId,
-                rating: parseInt(rating),
-                reviewText: reviewText
-            })
+            body: JSON.stringify(reviewData)
         });
         
         const result = await response.json();
         
-        if (result.success) {
+        console.log('Server response:', result); // Debug log
+        
+        if (response.ok && result.success) {
             alert('Review submitted successfully!');
             // Clear form
             document.getElementById('review-text').value = '';
@@ -152,7 +178,8 @@ async function submitReview() {
             // Reload reviews
             loadProductReviews(currentProductId);
         } else {
-            alert('Failed to submit review. Please try again.');
+            alert(result.error || 'Failed to submit review. Please try again.');
+            console.error('Review submission failed:', result);
         }
     } catch (error) {
         console.error('Error submitting review:', error);
