@@ -54,10 +54,16 @@ pool.getConnection()
 // =========================
 const productRoutes = require("./routes/productRoutes");
 const pageRoutes = require("./routes/pageRoutes");
-const authRoutes = require("./routes/authRoutes"); // NEW
+const authRoutes = require("./routes/authRoutes");
+const analyticsRoutes = require("./routes/analyticsRoutes");
+const orderRoutes = require("./routes/orderRoutes");
+const reviewRoutes = require("./routes/reviewRoutes");
 
 // API routes
 app.use("/api/products", productRoutes);
+app.use("/api/analytics", analyticsRoutes);
+app.use("/api/orders", orderRoutes);
+app.use("/api/reviews", reviewRoutes);
 
 // Auth routes (Login + Signup + Logout)
 app.use("/auth", authRoutes);

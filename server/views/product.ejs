@@ -1,14 +1,54 @@
 <%- include('partials/header', { 
   pageTitle: 'Product', 
   active: '', 
-  pageStyles: ['/css/cards.css']
+  pageStyles: ['/css/cards.css', '/css/reviews.css']
 }) %> 
   <section class="product-page">
     <div class="product-container">
-  <!-- Product details will be rendered by scripts/product.js based on URL or query param -->
-  <div id="product-details"></div>
+      <!-- Product details will be rendered by scripts/product.js based on URL or query param -->
+      <div id="product-details"></div>
+      
+      <!-- Reviews Section -->
+      <div class="reviews-section" id="reviews-section">
+        <h2>Customer Reviews</h2>
+        
+        <!-- Rating Summary -->
+        <div class="rating-summary">
+          <div class="avg-rating-display">
+            <span class="avg-rating-number" id="avg-rating">0.0</span>
+            <div class="stars" id="avg-rating-stars">☆☆☆☆☆</div>
+            <span class="total-reviews" id="total-reviews">0 reviews</span>
+          </div>
+          
+          <!-- Rating Distribution -->
+          <div class="rating-distribution" id="rating-distribution"></div>
+        </div>
+        
+        <!-- Add Review Form -->
+        <div class="add-review-form" id="add-review-form">
+          <h3>Write a Review</h3>
+          <div class="form-group">
+            <label>Rating:</label>
+            <select id="review-rating" class="form-control">
+              <option value="5">5 ⭐⭐⭐⭐⭐ Excellent</option>
+              <option value="4">4 ⭐⭐⭐⭐ Good</option>
+              <option value="3">3 ⭐⭐⭐ Average</option>
+              <option value="2">2 ⭐⭐ Poor</option>
+              <option value="1">1 ⭐ Terrible</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Your Review:</label>
+            <textarea id="review-text" class="form-control" rows="4" placeholder="Share your experience with this product..."></textarea>
+          </div>
+          <button onclick="submitReview()" class="btn btn-primary">Submit Review</button>
+        </div>
+        
+        <!-- Reviews List -->
+        <div class="reviews-list" id="reviews-list"></div>
+      </div>
     </div>
   </section>
 
   <!-- include product-specific script -->
-<%- include('partials/footer', { pageScripts: ['/scripts/product.js', '/scripts/cart-manager.js'] }) %>
+<%- include('partials/footer', { pageScripts: ['/scripts/product.js', '/scripts/cart-manager.js', '/scripts/reviews.js'] }) %>

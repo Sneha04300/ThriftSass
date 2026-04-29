@@ -25,6 +25,11 @@ router.get('/ai-style', (req, res) => {
   res.render('ai-style', { pageTitle: 'AI Stylist', active: 'ai' });
 });
 
+// Dashboard page
+router.get('/dashboard', (req, res) => {
+  res.render('dashboard', { pageTitle: 'My Dashboard', active: 'dashboard' });
+});
+
 /* ---------- AUTH PAGES ---------- */
 
 // Login page

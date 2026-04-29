@@ -1,4 +1,4 @@
-<%- include('partials/header', { pageTitle: 'Shop All', active: 'shop' }) %>
+<%- include('partials/header', { pageTitle: 'Shop All', active: 'shop', pageStyles: ['/css/advanced-search.css'] }) %>
 
     <section class="shop-hero">
         <div class="hero-overlay"></div>
@@ -8,11 +8,59 @@
         </div>
       </section>
 
+      <!-- Advanced Search Filters -->
+      <div class="search-filters-container">
+        <div class="filters-wrapper">
+          <h3>Filter Products</h3>
+          
+          <div class="filter-group">
+            <label>Category:</label>
+            <select id="category-filter" onchange="applyFilters()">
+              <option value="">All Categories</option>
+              <option value="Clothing">Clothing</option>
+              <option value="Jewellery">Jewellery</option>
+              <option value="Home Decor">Home Decor</option>
+              <option value="Accessories">Accessories</option>
+              <option value="Books">Books</option>
+            </select>
+          </div>
+          
+          <div class="filter-group">
+            <label>Price Range:</label>
+            <div class="price-inputs">
+              <input type="number" id="min-price" placeholder="Min ₹" onchange="applyFilters()">
+              <span>to</span>
+              <input type="number" id="max-price" placeholder="Max ₹" onchange="applyFilters()">
+            </div>
+          </div>
+          
+          <div class="filter-group">
+            <label>
+              <input type="checkbox" id="in-stock-filter" onchange="applyFilters()">
+              In Stock Only
+            </label>
+          </div>
+          
+          <div class="filter-group">
+            <label>Sort By:</label>
+            <select id="sort-by" onchange="applyFilters()">
+              <option value="">Default</option>
+              <option value="price_asc">Price: Low to High</option>
+              <option value="price_desc">Price: High to Low</option>
+              <option value="rating">Top Rated</option>
+            </select>
+          </div>
+          
+          <button onclick="clearFilters()" class="clear-filters-btn">Clear Filters</button>
+        </div>
+      </div>
+
       <!-- Products  -->
       <div class="products-showcase">
-  <div class="products-grid" id="product-container">
-    <!-- Products will be injected here using JavaScript OOP -->
-  </div>
-</div>  
+        <div class="products-count" id="products-count">Loading products...</div>
+        <div class="products-grid" id="product-container">
+          <!-- Products will be injected here using JavaScript -->
+        </div>
+      </div>  
 
-<%- include('partials/footer', { pageScripts: ['/scripts/shop_app.js','/scripts/cart-manager.js','/scripts/cart.js','/scripts/search.js'] }) %>
+<%- include('partials/footer', { pageScripts: ['/scripts/shop_app.js','/scripts/cart-manager.js','/scripts/cart.js','/scripts/search.js','/scripts/advanced-search.js'] }) %>

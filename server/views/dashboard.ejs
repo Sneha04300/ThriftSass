@@ -1,0 +1,65 @@
+<%- include('partials/header', { 
+  pageTitle: 'My Dashboard', 
+  active: 'dashboard',
+  pageStyles: ['/css/dashboard.css']
+}) %>
+
+<section class="dashboard-section">
+  <div class="dashboard-container">
+    <h1 class="dashboard-title">My Dashboard</h1>
+    
+    <!-- Stats Cards -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">💰</div>
+        <div class="stat-info">
+          <h3>Total Spending</h3>
+          <p class="stat-value" id="total-spending">₹0</p>
+        </div>
+      </div>
+      
+      <div class="stat-card">
+        <div class="stat-icon">📦</div>
+        <div class="stat-info">
+          <h3>Total Orders</h3>
+          <p class="stat-value" id="total-orders">0</p>
+        </div>
+      </div>
+      
+      <div class="stat-card">
+        <div class="stat-icon">⭐</div>
+        <div class="stat-info">
+          <h3>Reviews Written</h3>
+          <p class="stat-value" id="total-reviews">0</p>
+        </div>
+      </div>
+      
+      <div class="stat-card">
+        <div class="stat-icon">📅</div>
+        <div class="stat-info">
+          <h3>Last Order</h3>
+          <p class="stat-value" id="last-order-date">Never</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Recent Orders -->
+    <div class="dashboard-section-box">
+      <h2>Recent Orders</h2>
+      <div id="recent-orders" class="orders-list">
+        <div class="loading">Loading orders...</div>
+      </div>
+      <a href="/orders" class="view-all-link">View All Orders →</a>
+    </div>
+    
+    <!-- My Reviews -->
+    <div class="dashboard-section-box">
+      <h2>My Reviews</h2>
+      <div id="my-reviews" class="reviews-list">
+        <div class="loading">Loading reviews...</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer', { pageScripts: ['/scripts/dashboard.js'] }) %>
