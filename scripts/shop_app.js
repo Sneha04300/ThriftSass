@@ -58,9 +58,8 @@ fetch("/api/products")
     container.innerHTML = ""; // Clear old items
 
     data.forEach(item => {
-      const rawImage = item.image || "";
-      let imgPath = rawImage.replace(/^\.\//, "/");
-      imgPath = encodeURI(imgPath);
+      // Use image_url or image field from API
+      const imgPath = item.image || item.image_url || "";
 
       const product =
         item.type === "featured"
@@ -68,12 +67,6 @@ fetch("/api/products")
           : new ThriftItem(item.id, item.name, item.price, item.category, imgPath);
 
       container.innerHTML += product.displayItem();
-    });
-
-    // Fix image paths (if relative)
-    container.querySelectorAll(".product-image img").forEach(img => {
-      const s = img.getAttribute("src") || "";
-      if (s.startsWith("./")) img.src = s.replace(/^\.\//, "/");
     });
   })
   .catch(err => console.error("Error loading products:", err));

@@ -6,7 +6,15 @@ const pool = require("../config/db");
 router.get("/", async (req, res) => {
     try {
         const [products] = await pool.execute("SELECT * FROM products");
-        res.json(products);
+        
+        // Fix image URLs - encode spaces and special characters
+        const fixedProducts = products.map(product => ({
+            ...product,
+            image_url: product.image_url ? encodeURI(product.image_url) : null,
+            image: product.image_url ? encodeURI(product.image_url) : null // Add 'image' field for compatibility
+        }));
+        
+        res.json(fixedProducts);
     } catch (err) {
         console.error("Database error:", err);
         res.status(500).json({ error: "Failed to load products" });
@@ -23,7 +31,12 @@ router.get("/:id", async (req, res) => {
             return res.status(404).json({ error: "Product not found" });
         }
         
-        res.json(products[0]);
+        // Fix image URL
+        const product = products[0];
+        product.image_url = product.image_url ? encodeURI(product.image_url) : null;
+        product.image = product.image_url; // Add 'image' field for compatibility
+        
+        res.json(product);
     } catch (err) {
         console.error("Database error:", err);
         res.status(500).json({ error: "Failed to load product" });

@@ -33,6 +33,11 @@ app.use("/scripts", express.static(path.join(__dirname, "..", "scripts")));
 app.use("/assets", express.static(path.join(__dirname, "..", "assets")));
 app.use("/node_modules", express.static(path.join(__dirname, "..", "node_modules")));
 
+// Serve test-images.html for diagnostics
+app.get("/test-images.html", (req, res) => {
+    res.sendFile(path.join(__dirname, "..", "test-images.html"));
+});
+
 // EJS setup
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
