@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Review System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin: 15px 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .review-item {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .rating {
+            color: #ffc107;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🌟 Review System Test</h1>
+
+    <div class="test-section">
+        <h2>1. Add a Review</h2>
+        <form id="review-form">
+            <div class="form-group">
+                <label>User ID:</label>
+                <input type="number" id="userId" value="1" required>
+                <small>Use 1 or 2 (test users from database)</small>
+            </div>
+
+            <div class="form-group">
+                <label>Product ID:</label>
+                <input type="number" id="productId" value="0" required>
+                <small>Use 0-8 (products from database)</small>
+            </div>
+
+            <div class="form-group">
+                <label>Rating:</label>
+                <select id="rating" required>
+                    <option value="">Select Rating</option>
+                    <option value="5">⭐⭐⭐⭐⭐ (5 stars)</option>
+                    <option value="4">⭐⭐⭐⭐ (4 stars)</option>
+                    <option value="3">⭐⭐⭐ (3 stars)</option>
+                    <option value="2">⭐⭐ (2 stars)</option>
+                    <option value="1">⭐ (1 star)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Review Text:</label>
+                <textarea id="reviewText" rows="4" placeholder="Write your review here..."></textarea>
+            </div>
+
+            <button type="submit">Submit Review</button>
+        </form>
+        <div id="add-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>2. View Product Reviews</h2>
+        <div class="form-group">
+            <label>Product ID:</label>
+            <input type="number" id="viewProductId" value="0">
+            <button onclick="loadReviews()">Load Reviews</button>
+        </div>
+        <div id="reviews-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>3. Test API Directly</h2>
+        <button onclick="testAddReview()">Test Add Review API</button>
+        <button onclick="testGetReviews()">Test Get Reviews API</button>
+        <div id="api-result"></div>
+    </div>
+
+    <script>
+        // Add review form submission
+        document.getElementById('review-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const userId = document.getElementById('userId').value;
+            const productId = document.getElementById('productId').value;
+            const rating = document.getElementById('rating').value;
+            const reviewText = document.getElementById('reviewText').value;
+
+            const resultDiv = document.getElementById('add-result');
+            resultDiv.innerHTML = '<p>Submitting...</p>';
+
+            try {
+                const response = await fetch('/api/reviews/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        userId: parseInt(userId),
+                        productId: parseInt(productId),
+                        rating: parseFloat(rating),
+                        reviewText: reviewText
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    resultDiv.innerHTML = `<div class="success">✅ ${data.message}</div>`;
+                    document.getElementById('review-form').reset();
+                } else {
+                    resultDiv.innerHTML = `<div class="error">❌ ${data.error}</div>`;
+                }
+            } catch (err) {
+                resultDiv.innerHTML = `<div class="error">❌ Error: ${err.message}</div>`;
+            }
+        });
+
+        // Load reviews for a product
+        async function loadReviews() {
+            const productId = document.getElementById('viewProductId').value;
+            const resultDiv = document.getElementById('reviews-result');
+            resultDiv.innerHTML = '<p>Loading...</p>';
+
+            try {
+                const response = await fetch(`/api/reviews/product/${productId}`);
+                const data = await response.json();
+
+                if (data.error) {
+                    resultDiv.innerHTML = `<div class="error">${data.error}</div>`;
+                    return;
+                }
+
+                let html = `
+                    <h3>Average Rating: ${data.avgRating.toFixed(1)} ⭐</h3>
+                    <p>Total Reviews: ${data.totalReviews}</p>
+                    <hr>
+                `;
+
+                if (data.reviews.length === 0) {
+                    html += '<p>No reviews yet.</p>';
+                } else {
+                    data.reviews.forEach(review => {
+                        html += `
+                            <div class="review-item">
+                                <div class="rating">${'⭐'.repeat(review.rating)}</div>
+                                <p><strong>${review.user_name}</strong> - ${review.formatted_date}</p>
+                                <p>${review.review_text || 'No comment'}</p>
+                            </div>
+                        `;
+                    });
+                }
+
+                resultDiv.innerHTML = html;
+            } catch (err) {
+                resultDiv.innerHTML = `<div class="error">Error: ${err.message}</div>`;
+            }
+        }
+
+        // Test add review API directly
+        async function testAddReview() {
+            const resultDiv = document.getElementById('api-result');
+            resultDiv.innerHTML = '<p>Testing...</p>';
+
+            const testData = {
+                userId: 1,
+                productId: 0,
+                rating: 5,
+                reviewText: 'Test review from API test'
+            };
+
+            console.log('Sending:', testData);
+
+            try {
+                const response = await fetch('/api/reviews/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(testData)
+                });
+
+                const data = await response.json();
+                console.log('Response:', data);
+
+                resultDiv.innerHTML = `
+                    <div class="${data.success ? 'success' : 'error'}">
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    </div>
+                `;
+            } catch (err) {
+                console.error('Error:', err);
+                resultDiv.innerHTML = `<div class="error">${err.message}</div>`;
+            }
+        }
+
+        // Test get reviews API
+        async function testGetReviews() {
+            const resultDiv = document.getElementById('api-result');
+            resultDiv.innerHTML = '<p>Testing...</p>';
+
+            try {
+                const response = await fetch('/api/reviews/product/0');
+                const data = await response.json();
+                console.log('Reviews:', data);
+
+                resultDiv.innerHTML = `
+                    <div class="success">
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    </div>
+                `;
+            } catch (err) {
+                console.error('Error:', err);
+                resultDiv.innerHTML = `<div class="error">${err.message}</div>`;
+            }
+        }
+
+        // Auto-load reviews on page load
+        window.onload = () => {
+            loadReviews();
+        };
+    </script>
+</body>
+</html>

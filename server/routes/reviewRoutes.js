@@ -11,20 +11,39 @@ router.post("/add", async (req, res) => {
     try {
         const { userId, productId, rating, reviewText } = req.body;
 
-        // Validate rating
+        // Log received data for debugging
+        console.log("Review data received:", { userId, productId, rating, reviewText });
+
+        // Validate required fields
+        if (!userId) {
+            return res.status(400).json({ error: "User ID is required" });
+        }
+
+        if (!productId) {
+            return res.status(400).json({ error: "Product ID is required" });
+        }
+
+        if (!rating) {
+            return res.status(400).json({ error: "Rating is required" });
+        }
+
+        // Validate rating range
         if (rating < 1 || rating > 5) {
             return res.status(400).json({ error: "Rating must be between 1 and 5" });
         }
 
         await pool.execute(
             "INSERT INTO reviews (user_id, product_id, rating, review_text) VALUES (?, ?, ?, ?)",
-            [userId, productId, rating, reviewText]
+            [userId, productId, rating, reviewText || null]
         );
 
         res.json({ success: true, message: "Review added successfully" });
     } catch (err) {
         console.error("Error adding review:", err);
-        res.status(500).json({ error: "Failed to add review" });
+        res.status(500).json({ 
+            error: "Failed to add review",
+            details: err.message 
+        });
     }
 });
 

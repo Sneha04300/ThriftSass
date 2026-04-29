@@ -38,6 +38,11 @@ app.get("/test-images.html", (req, res) => {
     res.sendFile(path.join(__dirname, "..", "test-images.html"));
 });
 
+// Serve test-review.html for testing reviews
+app.get("/test-review.html", (req, res) => {
+    res.sendFile(path.join(__dirname, "..", "test-review.html"));
+});
+
 // Serve test-cart.html for cart diagnostics
 app.get("/test-cart.html", (req, res) => {
     res.sendFile(path.join(__dirname, "..", "test-cart.html"));
