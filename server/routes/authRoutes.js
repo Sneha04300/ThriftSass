@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/User");
+const pool = require("../config/db");
 const bcrypt = require("bcryptjs");
 
 // Signup POST
@@ -9,18 +9,14 @@ router.post("/signup", async (req, res) => {
         const { name, email, password } = req.body;
 
         // Check existing user
-        const existingUser = await User.findOne({ email });
-        if (existingUser) {
+        const [existingUsers] = await pool.execute("SELECT * FROM users WHERE email = ?", [email]);
+        if (existingUsers.length > 0) {
             return res.send("User already exists");
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        await User.create({
-            name,
-            email,
-            password: hashedPassword
-        });
+        await pool.execute("INSERT INTO users (name, email, password_hash) VALUES (?, ?, ?)", [name, email, hashedPassword]);
 
         res.redirect("/login");
     } catch (err) {
@@ -34,14 +30,17 @@ router.post("/login", async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        const user = await User.findOne({ email });
-        if (!user) return res.send("User not found");
+        const [users] = await pool.execute("SELECT * FROM users WHERE email = ?", [email]);
+        if (users.length === 0) {
+            return res.send("User not found");
+        }
+        const user = users[0];
 
-        const match = await bcrypt.compare(password, user.password);
+        const match = await bcrypt.compare(password, user.password_hash);
         if (!match) return res.send("Incorrect password");
 
         // Save user session
-        req.session.user = user;
+        req.session.user = { id: user.id, name: user.name, email: user.email };
         res.redirect("/");
     } catch (err) {
         console.log(err);

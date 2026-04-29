@@ -1,9 +1,9 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const path = require("path");
 const session = require("express-session");
+const pool = require("./config/db");
 
 dotenv.config();
 const app = express();
@@ -38,12 +38,16 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 // =========================
-// MongoDB Connection
+// MySQL Database Connection
 // =========================
-mongoose
-    .connect(process.env.MONGO_URI)
-    .then(() => console.log(" MongoDB connected"))
-    .catch((err) => console.log(" DB connection failed:", err));
+pool.getConnection()
+    .then((connection) => {
+        console.log("✅ MySQL Database connected");
+        connection.release();
+    })
+    .catch((err) => {
+        console.log("❌ MySQL connection failed:", err);
+    });
 
 // =========================
 // Routes
