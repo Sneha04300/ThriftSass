@@ -64,28 +64,26 @@ function createProductCard(product) {
     const stockStatus = product.stock > 0 ? 'In Stock' : 'Out of Stock';
     const stockClass = product.stock > 0 ? 'in-stock' : 'out-of-stock';
     const avgRating = product.avg_rating ? parseFloat(product.avg_rating).toFixed(1) : '0.0';
+    const imgPath = product.image || product.image_url || '';
     
     return `
-        <div class="product-card">
+        <div class="product-card" data-id="${product.id}">
             <div class="product-image">
-                <img src="${product.image_url}" alt="${product.name}">
+                <img src="${imgPath}" alt="${product.name}">
                 <span class="stock-badge ${stockClass}">${stockStatus}</span>
             </div>
             <div class="product-info">
-                <span class="product-category">${product.category_name}</span>
-                <h3 class="product-name">${product.name}</h3>
+                <span class="product-category">${product.category_name || ''}</span>
+                <h3 class="product-title">${product.name}</h3>
                 <div class="product-rating">
                     <span class="rating-stars">${getStarDisplay(avgRating)}</span>
                     <span class="rating-value">${avgRating}</span>
                 </div>
-                <p class="product-price">₹${product.price}</p>
-                <div class="product-actions">
-                    <button onclick="viewProduct(${product.id})" class="btn-view">View Details</button>
-                    ${product.stock > 0 ? 
-                        `<button onclick="addToCartQuick(${product.id}, '${product.name}', ${product.price}, '${product.image_url}')" class="btn-cart">Add to Cart</button>` :
-                        `<button class="btn-disabled" disabled>Out of Stock</button>`
-                    }
-                </div>
+                <p class="product-price"><span class="currency">Rs</span> ${product.price}</p>
+                ${product.stock > 0 ? 
+                    `<button class="add-to-cart">Add to Cart</button>` :
+                    `<button class="btn-disabled" disabled>Out of Stock</button>`
+                }
             </div>
         </div>
     `;
@@ -111,28 +109,6 @@ function clearFilters() {
     applyFilters();
 }
 
-// View product details
-function viewProduct(productId) {
-    window.location.href = `/product?id=${productId}`;
-}
-
-// Quick add to cart
-function addToCartQuick(productId, productName, productPrice, productImage) {
-    // Use existing cart manager if available
-    if (typeof CartManager !== 'undefined') {
-        CartManager.addItem({
-            id: productId,
-            name: productName,
-            price: productPrice,
-            image: productImage,
-            quantity: 1
-        });
-        alert(`${productName} added to cart!`);
-    } else {
-        console.error('CartManager not found');
-    }
-}
-
 // Helper function to display stars
 function getStarDisplay(rating) {
     const numRating = parseFloat(rating);
@@ -145,7 +121,15 @@ function getStarDisplay(rating) {
            '☆'.repeat(emptyStars);
 }
 
+// View product details
+function viewProduct(productId) {
+    window.location.href = `/product/${productId}`;
+}
+
 // Load products on page load
 document.addEventListener('DOMContentLoaded', () => {
-    applyFilters(); // Load all products initially
+    // Only apply filters if filter elements exist (on shop page)
+    if (document.getElementById('category-filter')) {
+        applyFilters(); // Load all products initially
+    }
 });
